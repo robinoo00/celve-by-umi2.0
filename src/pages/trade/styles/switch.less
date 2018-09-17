@@ -1,0 +1,53 @@
+@import "~@/colors";
+
+.container {
+    padding: .3rem .4rem;
+    justify-content: space-between;
+    .info {
+        flex: 0;
+        min-width: 2.3rem;
+        .name {
+            justify-content: space-between;
+            font-size: .43rem;
+            .collect:before, .collected:before {
+                content: '\e675';
+                font-family: iconfont;
+            }
+            .collected:before {
+                color: @up;
+            }
+        }
+        .no {
+            margin-top: .15rem;
+            color: @grey;
+        }
+    }
+    .con {
+        flex: 0;
+        min-width: 4rem;
+        .value {
+            font-size: 1.12rem;
+            text-align: right;
+        }
+        .details {
+            font-size: .4rem;
+            margin-left: 1rem;
+            text-align: left;
+            div:first-of-type {
+                margin-bottom: .1rem;
+            }
+        }
+    }
+    .submit {
+        flex: 0;
+        min-width: 2.2rem;
+        :global {
+            .am-button-primary {
+                font-size: .34rem;
+                height: .8rem;
+                line-height: .8rem;
+                background-color: @btn;
+            }
+        }
+    }
+}

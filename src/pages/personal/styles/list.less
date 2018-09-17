@@ -1,0 +1,48 @@
+@import '~@/colors';
+
+.container{
+    .strategy,.money,.promote,.password,.setting{
+        position: relative;
+        &:before{
+            font-family: iconfont;
+            position: absolute;
+            font-size: .7rem;
+            color: @up;
+            top: .1rem;
+            left: .4rem;
+        }
+    }
+    .strategy:before{
+        content:'\e638';
+    }
+    .money:before{
+        content:'\e94b';
+    }
+    .promote:before{
+        content:'\e60d';
+    }
+    .password:before{
+        content:'\e613';
+        font-size: .65rem;
+    }
+    .setting:before{
+        content:'\e65b';
+        font-size: .58rem;
+    }
+    :global{
+        .am-list-item{
+            background-color: transparent;
+            background-color: @section;
+        }
+        .am-list-item .am-list-line .am-list-content{
+            text-indent: 1.2rem;
+            color: @grey;
+            font-size: .4rem;
+            line-height: 1rem;
+        }
+        .am-list-item .am-list-line .am-list-arrow{
+            width: .3rem;
+            height: .3rem;
+        }
+    }
+}

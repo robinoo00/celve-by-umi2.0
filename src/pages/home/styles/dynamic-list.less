@@ -1,0 +1,39 @@
+@import "~@/colors";
+.container{
+    padding: .3rem;
+    .item{
+        border-bottom: 1px solid rgba(92, 92, 92, 0.73);
+        padding: .34rem 0;
+        .headimg{
+            img{
+                border-radius: 50%;
+                width: .8rem;
+                height: .8rem;
+            }
+        }
+        .nickname{
+            font-size: .4rem;
+            margin-left: .2rem;
+        }
+        .detail{
+            color: @grey;
+            margin-top: .2rem;
+            div:nth-of-type(2){
+                margin-left: .2rem;
+            }
+        }
+        .submit{
+            flex: 0;
+            min-width: 2rem;
+            display: block;
+            :global{
+                .am-button{
+                    font-size: .37rem;
+                    background-color: #e84c3d;
+                    height: .8rem;
+                    line-height: .8rem;
+                }
+            }
+        }
+    }
+}

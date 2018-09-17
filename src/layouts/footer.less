@@ -1,0 +1,42 @@
+@import "~@/colors";
+
+.wrap{
+    margin-top: 1.5rem;
+    .container{
+        position: fixed;
+        z-index: 100;
+        bottom: 0;
+        width: 100%;
+        padding: .2rem 0;
+        .item{
+            color: @grey;
+            text-align: center;
+            .icon{
+                &:before{
+                    font-family: iconfont;
+                    font-size: .7rem;
+                }
+            }
+            &:nth-of-type(1) .icon:before{
+                font-size: .65rem;
+                content:'\e603';
+            }
+            &:nth-of-type(2) .icon:before{
+                content:'\e638';
+            }
+            &:nth-of-type(3) .icon:before{
+                content:'\e602';
+            }
+            &:nth-of-type(4) .icon:before{
+                content:'\e608';
+            }
+            &:nth-of-type(5) .icon:before{
+                content:'\e630';
+            }
+            .title{
+                margin-top: .05rem;
+                font-size: .37rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+@import "~@/colors";
+
+.container{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-top: 4rem;
+    padding:.4rem;
+    background-color: @section;
+    :global {
+        .am-button-primary {
+            font-size: .5rem;
+            height: 1.2rem;
+            line-height: 1.2rem;
+            background-color: @btn;
+        }
+    }
+}

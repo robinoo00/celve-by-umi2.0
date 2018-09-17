@@ -1,0 +1,27 @@
+@import "~@/colors.less";
+.container{
+    padding: .5rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(92, 92, 92, 0.73);
+    .item{
+        &:not(:last-of-type){
+            border-right: 1px solid rgba(92, 92, 92, 0.73);
+        }
+        .title{
+            font-size: .45rem;
+        }
+        .total{
+            font-size: .54rem;
+            margin: .32rem 0;
+            font-weight: 500;
+        }
+        .detail{
+            justify-content: space-around;
+            .num,.percents{
+                font-size: .32rem;
+            }
+        }
+    }
+}
+
+

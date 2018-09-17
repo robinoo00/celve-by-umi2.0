@@ -1,0 +1,32 @@
+@import "~@/colors";
+
+.container{
+    margin-top: .3rem;
+    .item{
+        padding: .4rem;
+        justify-content: space-between;
+        border-bottom: 1px solid @borderBtoom;
+        .nickname{
+            font-size: .42rem;
+        }
+        .details{
+            color: @grey;
+            margin-top: .2rem;
+            div:nth-of-type(2){
+                margin: 0 .3rem;
+            }
+        }
+    }
+    .submit{
+        flex: 0;
+        min-width: 2rem;
+        :global{
+            .am-button-primary{
+                font-size: .34rem;
+                height: .8rem;
+                line-height: .8rem;
+                background-color: @btn;
+            }
+        }
+    }
+}

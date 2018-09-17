@@ -1,0 +1,92 @@
+@import '~@/colors';
+.mod-news-wrap{
+    .livecon{
+        padding: 0;
+        margin: 0;
+        padding-top: .3rem;
+        .timeline{
+            width: 3.8rem;
+            height: 24px;
+            position: relative;
+            .dotbg {
+                position: absolute;
+                left: 0;
+                top: 3px;
+                width: 10px;
+                height: 10px;
+                background-color: #e9eff4;
+                border-radius: 50%;
+                z-index: 1;
+            }
+            .dot {
+                width: 4px;
+                height: 4px;
+                margin: 3px;
+                background-color: #1b7ecc;
+                border-radius: 50%;
+                z-index: 1;
+            }
+            .time {
+                position: absolute;
+                right: -24px;
+                top: -.13rem;
+                font-size: .35rem;
+                width: 3.8rem;
+                height: .5rem;
+                line-height: .5rem;
+                border-radius: 11px;
+                text-align: center;
+                color: #1b7ecc;
+                background-color: #E9F2FA;
+                z-index: 1;
+            }
+
+        }
+        .onlytxt {
+            padding: 0 10px 0 .4rem;
+            color: #999;
+            font-size: .4rem;
+            img{
+                width: 100%;
+            }
+        }
+    }
+    :global{
+        .am-list-body::before,.am-list-body::after{
+            display: none !important;
+        }
+    }
+}
+
+.mod-news-wrap .timecon {
+    margin: 0 0 0 16px;
+    position: relative;
+}
+.mod-news-wrap .livecon li:first-of-type{
+    margin-top: 10px;
+}
+.mod-news-wrap .livecon li {
+    position: relative;
+    width: 100%;
+    padding: 0 0 15px;
+    //background-color: @sectionColor !important;
+    position: relative;
+}
+.mod-news-wrap .livecon li:before{
+    content:'';
+    position: absolute;
+    left: 4px;
+    top: 3px;
+    width: 1px;
+    height: 100%;
+    background-color: #fff;
+}
+.mod-news-wrap .livecon li:after{
+    content:'';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 40px;
+    height: 1px;
+    background-color: #fff;
+}

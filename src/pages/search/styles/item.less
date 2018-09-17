@@ -1,0 +1,25 @@
+@import "~@/colors";
+
+.container{
+    justify-content: space-between;
+    padding: .3rem;
+    .info{
+        color: @grey;
+        div:first-of-type{
+            margin-right: .3rem;
+        }
+    }
+    .collect{
+        flex: 0;
+        min-width: 1rem;
+        text-align: right;
+    }
+    .collect:before,.collected:before{
+        content:'\e675';
+        font-family: iconfont;
+        font-size: .5rem;
+    }
+    .collected:before{
+        color: @up;
+    }
+}
