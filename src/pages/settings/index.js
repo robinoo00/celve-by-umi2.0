@@ -44,7 +44,6 @@ export default class extends PureComponent {
         for(let item of list){
             item['extra'] = datas[item['key']]
             if(item['key'] === '身份证'){
-                console.log(123)
                 if(!datas[item['key']]){
                     item['extra'] = datas['状态']
                 }
@@ -63,7 +62,8 @@ export default class extends PureComponent {
             if(item.extra === '审核中'){
                 modal('审核中，请耐心等待');
                 return
-            }else{
+            }
+            if(item.extra === '已认证'){
                 modal('已认证');
                 return
             }

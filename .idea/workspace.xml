@@ -2,54 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="96b57af8-6a2e-4290-be16-5ec4f185e175" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/config/config.js" afterPath="$PROJECT_DIR$/bak/config/config.js" />
-      <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change beforePath="$PROJECT_DIR$/src/antdReset.less" afterPath="$PROJECT_DIR$/src/antdReset.less" />
-      <change beforePath="$PROJECT_DIR$/src/colors.less" afterPath="$PROJECT_DIR$/src/colors.less" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/index.js" afterPath="$PROJECT_DIR$/src/components/header/index.js" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/style.less" afterPath="$PROJECT_DIR$/src/components/header/style.less" />
-      <change beforePath="$PROJECT_DIR$/src/defaultSettings.js" afterPath="$PROJECT_DIR$/src/defaultSettings.js" />
-      <change beforePath="$PROJECT_DIR$/src/global.less" afterPath="$PROJECT_DIR$/src/global.less" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/footer.js" afterPath="$PROJECT_DIR$/src/layouts/footer.js" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/index.js" afterPath="$PROJECT_DIR$/src/layouts/index.js" />
-      <change beforePath="$PROJECT_DIR$/src/pages/document.ejs" afterPath="$PROJECT_DIR$/src/pages/document.ejs" />
-      <change beforePath="$PROJECT_DIR$/src/pages/home/components/banner.js" afterPath="$PROJECT_DIR$/src/pages/home/components/banner.js" />
-      <change beforePath="$PROJECT_DIR$/src/pages/home/components/dynamic-list.js" afterPath="$PROJECT_DIR$/src/pages/home/components/dynamic-list.js" />
-      <change beforePath="$PROJECT_DIR$/src/pages/home/components/exponent.js" afterPath="$PROJECT_DIR$/src/pages/home/components/exponent.js" />
-      <change beforePath="$PROJECT_DIR$/src/pages/home/components/nav.js" afterPath="$PROJECT_DIR$/src/pages/home/components/nav.js" />
-      <change beforePath="$PROJECT_DIR$/src/pages/home/components/search.js" afterPath="$PROJECT_DIR$/src/pages/home/components/search.js" />
-      <change beforePath="$PROJECT_DIR$/src/pages/home/styles/nav.less" afterPath="$PROJECT_DIR$/src/pages/home/styles/nav.less" />
-      <change beforePath="$PROJECT_DIR$/src/pages/home/styles/search.less" afterPath="$PROJECT_DIR$/src/pages/home/styles/search.less" />
-      <change beforePath="$PROJECT_DIR$/src/pages/news/components/list.js" afterPath="$PROJECT_DIR$/src/pages/news/components/list.js" />
-      <change beforePath="$PROJECT_DIR$/src/pages/news/models/index.js" afterPath="$PROJECT_DIR$/src/pages/news/models/index.js" />
-      <change beforePath="$PROJECT_DIR$/src/pages/news/styles/list.less" afterPath="$PROJECT_DIR$/src/pages/news/styles/list.less" />
-      <change beforePath="$PROJECT_DIR$/src/pages/optional/components/header.js" afterPath="$PROJECT_DIR$/src/pages/optional/components/header.js" />
-      <change beforePath="$PROJECT_DIR$/src/pages/optional/components/list.js" afterPath="$PROJECT_DIR$/src/pages/optional/components/list.js" />
-      <change beforePath="$PROJECT_DIR$/src/pages/optional/edit.js" afterPath="$PROJECT_DIR$/src/pages/optional/edit.js" />
-      <change beforePath="$PROJECT_DIR$/src/pages/optional/styles/edit.less" afterPath="$PROJECT_DIR$/src/pages/optional/styles/edit.less" />
-      <change beforePath="$PROJECT_DIR$/src/pages/optional/styles/list.less" afterPath="$PROJECT_DIR$/src/pages/optional/styles/list.less" />
-      <change beforePath="$PROJECT_DIR$/src/pages/personal/components/info.js" afterPath="$PROJECT_DIR$/src/pages/personal/components/info.js" />
-      <change beforePath="$PROJECT_DIR$/src/pages/personal/components/list.js" afterPath="$PROJECT_DIR$/src/pages/personal/components/list.js" />
-      <change beforePath="$PROJECT_DIR$/src/pages/personal/index.js" afterPath="$PROJECT_DIR$/src/pages/personal/index.js" />
-      <change beforePath="$PROJECT_DIR$/src/pages/personal/styles/list.less" afterPath="$PROJECT_DIR$/src/pages/personal/styles/list.less" />
-      <change beforePath="$PROJECT_DIR$/src/pages/search/components/history.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/pages/search/components/input.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/pages/search/components/item.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/pages/search/components/results.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/pages/search/index.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/pages/search/styles/history.less" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/pages/search/styles/index.less" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/pages/search/styles/input.less" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/pages/search/styles/item.less" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/pages/trade/components/header.js" afterPath="$PROJECT_DIR$/src/pages/trade/components/header.js" />
-      <change beforePath="$PROJECT_DIR$/src/pages/trade/components/submit.js" afterPath="$PROJECT_DIR$/src/pages/trade/components/submit.js" />
-      <change beforePath="$PROJECT_DIR$/src/pages/trade/components/switch.js" afterPath="$PROJECT_DIR$/src/pages/trade/components/switch.js" />
-      <change beforePath="$PROJECT_DIR$/src/pages/trade/index.js" afterPath="$PROJECT_DIR$/src/pages/trade/index.js" />
-      <change beforePath="$PROJECT_DIR$/src/pages/trade/styles/switch.less" afterPath="$PROJECT_DIR$/src/pages/trade/styles/switch.less" />
-      <change beforePath="$PROJECT_DIR$/src/services/api.js" afterPath="$PROJECT_DIR$/src/services/api.js" />
-      <change beforePath="$PROJECT_DIR$/src/utils/common.js" afterPath="$PROJECT_DIR$/src/utils/common.js" />
-      <change beforePath="$PROJECT_DIR$/src/utils/request.js" afterPath="$PROJECT_DIR$/src/utils/request.js" />
+      <change beforePath="$PROJECT_DIR$/src/pages/settings/index.js" afterPath="$PROJECT_DIR$/src/pages/settings/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -135,11 +88,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
+            <state relative-caret-position="493">
               <caret line="23" column="34" lean-forward="false" selection-start-line="22" selection-start-column="4" selection-end-line="23" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/pages/settings/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="47" column="47" lean-forward="true" selection-start-line="47" selection-start-column="36" selection-end-line="47" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -152,18 +115,6 @@
               <caret line="45" column="39" lean-forward="false" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="39" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/header/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="18" column="10" lean-forward="false" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -256,7 +207,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/utils/params.js" />
         <option value="$PROJECT_DIR$/src/pages/account/models/index.js" />
         <option value="$PROJECT_DIR$/src/pages/home/styles/nav.less" />
         <option value="$PROJECT_DIR$/src/global.less" />
@@ -297,7 +247,6 @@
         <option value="$PROJECT_DIR$/src/pages/trade/components/switch.js" />
         <option value="$PROJECT_DIR$/src/pages/trade/index.js" />
         <option value="$PROJECT_DIR$/src/pages/trade/components/k2/index.js" />
-        <option value="$PROJECT_DIR$/src/pages/settings/index.js" />
         <option value="$PROJECT_DIR$/src/pages/help/detail.js" />
         <option value="$PROJECT_DIR$/src/pages/optional/components/list.js" />
         <option value="$PROJECT_DIR$/src/utils/hierarchy.js" />
@@ -307,6 +256,8 @@
         <option value="$PROJECT_DIR$/src/models/base.js" />
         <option value="$PROJECT_DIR$/src/components/header/index.js" />
         <option value="$PROJECT_DIR$/src/layouts/index.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/pages/settings/index.js" />
       </list>
     </option>
   </component>
@@ -325,9 +276,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="118" />
-    <option name="y" value="12" />
-    <option name="width" value="1298" />
+    <option name="x" value="564" />
+    <option name="y" value="11" />
+    <option name="width" value="1417" />
     <option name="height" value="1029" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -393,14 +344,14 @@
               <item name="celve-by-umi2.0" type="b2602c69:ProjectViewProjectNode" />
               <item name="celve-by-umi2.0" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="celve-by-umi2.0" type="b2602c69:ProjectViewProjectNode" />
               <item name="celve-by-umi2.0" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="header" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="settings" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -484,17 +435,18 @@
       <workItem from="1539582043284" duration="143000" />
       <workItem from="1539587990466" duration="64363000" />
       <workItem from="1540170747907" duration="6727000" />
-      <workItem from="1540187671629" duration="57471000" />
+      <workItem from="1540187671629" duration="58852000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="405707000" />
+    <option name="totallyTimeSpent" value="407088000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="118" y="12" width="1298" height="1029" extended-state="0" />
+    <frame x="564" y="11" width="1417" height="1029" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20079365" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18346629" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -768,16 +720,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/settings/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="58" column="35" lean-forward="false" selection-start-line="58" selection-start-column="35" selection-end-line="58" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#35#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/help/detail.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
@@ -897,7 +839,7 @@
         <state relative-caret-position="375">
           <caret line="18" column="10" lean-forward="false" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -972,8 +914,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
+        <state relative-caret-position="493">
           <caret line="23" column="34" lean-forward="false" selection-start-line="22" selection-start-column="4" selection-end-line="23" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/settings/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="47" column="47" lean-forward="true" selection-start-line="47" selection-start-column="36" selection-end-line="47" selection-end-column="47" />
           <folding />
         </state>
       </provider>
