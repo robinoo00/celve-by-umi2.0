@@ -22,7 +22,7 @@ export default class extends PureComponent {
                         </Flex>
                         <Flex styleName="detail">
                             <div>16秒前</div>
-                            <div>金牛化工</div>
+                            <div>金牛化</div>
                         </Flex>
                     </Flex.Item>
                     <Flex.Item styleName="submit">
@@ -41,7 +41,7 @@ export default class extends PureComponent {
                         </Flex>
                         <Flex styleName="detail">
                             <div>16秒前</div>
-                            <div>金牛化工</div>
+                            <div>金牛化</div>
                         </Flex>
                     </Flex.Item>
                     <Flex.Item styleName="submit">

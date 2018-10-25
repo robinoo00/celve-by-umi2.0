@@ -1,6 +1,7 @@
 import fetch from 'dva/fetch';
 import setting from '@/defaultSettings'
 import {stringify} from 'qs'
+import Token from './token'
 
 function parseJSON(response) {
     return response.json();
@@ -23,7 +24,13 @@ function checkStatus(response) {
  * @return {object}           An object containing either "data" or "err"
  */
 export default function request(url, options) {
-    url = setting.port + url
+    const re = reBuild(url,options)
+    const token = new Token()
+    if(!re){
+        token.noCidCallBack()
+    }
+    url = re.url
+    options = re.options
     const defaultOptions = {};
     const newOptions = { ...defaultOptions, ...options };
     if (
@@ -48,7 +55,11 @@ export default function request(url, options) {
         .then(checkStatus)
         .then(parseJSON)
         .then(data => {
-            return data
+            if(data.msg === '登陆错误'){
+                token.noCidCallBack()
+            }else{
+                return data
+            }
         })
         .catch(err => {
             console.log(err)
@@ -56,3 +67,31 @@ export default function request(url, options) {
         });
 }
 
+function reBuild(url,options){
+    const token = new Token()
+    if(token.ifNeddCid(url)) {
+        if(!token.checkCid()){
+            return null
+        }
+        if(options && options.method === 'POST'){
+            if(options.body instanceof FormData){
+                options.body.append('cid',token.getCid())
+            }else{
+                options.body = {
+                    ...options.body,
+                    cid:token.getCid()
+                }
+            }
+        }else{
+            const connector = url.includes('?') ? '&' : '?'
+            url = url + `${connector}cid=` + token.getCid()
+        }
+    }
+    if(!url.includes('http')){
+        url = setting.port + url
+    }
+    return {
+        url:url,
+        options:options
+    }
+}

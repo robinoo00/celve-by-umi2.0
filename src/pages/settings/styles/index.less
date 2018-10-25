@@ -1,0 +1,36 @@
+@import '~@/colors';
+
+.list{
+    background-color: @section;
+    margin-top: .4rem;
+    :global{
+        .am-list-item{
+            background-color: transparent;
+            padding-left: .54rem;
+        }
+        .am-list-item .am-list-line .am-list-content{
+            color: #e2e2e2;
+            font-size: .4rem;
+            line-height: 1rem;
+        }
+        .am-list-body::before,.am-list-body::after{
+            display: none;
+        }
+        .am-list-item .am-list-line .am-list-arrow{
+            width: .4rem;
+            height: .4rem;
+        }
+        .am-list-item .am-list-line .am-list-extra{
+            font-size: .4rem;
+        }
+    }
+}
+.submit{
+    padding: 1rem .4rem;
+    :global{
+        .am-button{
+            height: 1.2rem;
+            line-height: 1.2rem;
+        }
+    }
+}

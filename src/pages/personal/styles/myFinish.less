@@ -1,0 +1,30 @@
+@import '~@/colors';
+
+.container{
+    .item{
+        background-color: @section;
+        margin-top: .5rem;
+        .info{
+            span{
+                margin-right: .3rem;
+                &:nth-of-type(3){
+                    color: @grey;
+                }
+            }
+        }
+        .con{
+            padding: 0 .6rem;
+        }
+
+    }
+    :global{
+        .am-list-body::before{
+            opacity: 0;
+        }
+        .am-list-body::after{
+            opacity: 0;
+        }
+    }
+}
+
+

@@ -25,8 +25,8 @@ export default class extends PureComponent {
             {title:'我的',url:'/personal'}
         ]
         return (
-            <div styleName="wrap" data-type="section">
-                <Flex styleName="container"  id="footer">
+            <div styleName="wrap">
+                <Flex styleName="container"  id="footer" data-type="section">
                     {list.map(item => (
                         <Flex.Item
                             key={item.title}

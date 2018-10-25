@@ -1,4 +1,4 @@
-import {getNews} from "@/services/api"
+import {GetNews} from "@/services/api"
 import {ListView} from 'antd-mobile'
 
 export default {
@@ -38,7 +38,7 @@ export default {
                 pgIndex: page,
                 pgSize: 10
             }
-            const data = yield call(getNews, params)
+            const data = yield call(GetNews, params)
             if (data) {
                 yield put({
                     type: 'assignData',

@@ -8,7 +8,6 @@
             position: absolute;
             font-size: .7rem;
             color: @up;
-            top: .1rem;
             left: .4rem;
         }
     }
@@ -43,6 +42,9 @@
         .am-list-item .am-list-line .am-list-arrow{
             width: .3rem;
             height: .3rem;
+        }
+        .am-list-body::before,.am-list-body::after{
+            display: none;
         }
     }
 }

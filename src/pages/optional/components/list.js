@@ -2,11 +2,49 @@ import {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import styles from '../styles/list.less'
 import {Flex} from 'antd-mobile'
+import {SelectedStockList} from '@/services/api'
+import router from 'umi/router'
+import {connect} from 'dva'
 
+@connect(({optional}) => ({
+    list:optional.list
+}))
 @CSSModules(styles)
 
 export default class extends PureComponent {
+    sid = 0
+    componentDidMount(){
+        this._getData()
+        this.sid = setInterval(this._getData,3000)
+    }
+    componentWillUnmount(){
+        clearInterval(this.sid)
+    }
+    _getData = () => {
+        const {dispatch} = this.props
+        dispatch({
+            type:'optional/getList'
+        })
+    }
+    _renderItem = (data) => {
+        const percent = data.updown.split('%')[0]
+        return (
+            <Flex styleName="item" key={data.code} onClick={() => {router.push({pathname:'trade',query:{code:data.code}})}}>
+                <Flex.Item>
+                    <div>{data.name || '暂无'}</div>
+                    <div styleName="no">{data.code}</div>
+                </Flex.Item>
+                <Flex.Item data-color={percent > 0 ? 'up' : 'down'}>
+                    {data.price || '-'}
+                </Flex.Item>
+                <Flex.Item data-color={percent > 0 ? 'up' : 'down'}>
+                    {data.updown || '-'}
+                </Flex.Item>
+            </Flex>
+        )
+    }
     render() {
+        const {list} = this.props
         return (
             <div styleName="container">
                 <Flex styleName="item">
@@ -20,18 +58,10 @@ export default class extends PureComponent {
                         涨跌
                     </Flex.Item>
                 </Flex>
-                <Flex styleName="item">
-                    <Flex.Item>
-                        <div>名称</div>
-                        <div styleName="no">sz0000222</div>
-                    </Flex.Item>
-                    <Flex.Item data-color="up">
-                        18.93
-                    </Flex.Item>
-                    <Flex.Item data-color="down">
-                        0.71
-                    </Flex.Item>
-                </Flex>
+                {list.map(item => this._renderItem(item))}
+                {list.length === 0 ? <div styleName="empty" onClick={() => {router.push('/optional/search')}}>
+                    <span>添加股票</span>
+                </div> : null}
             </div>
         )
     }

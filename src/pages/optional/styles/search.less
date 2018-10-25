@@ -1,0 +1,47 @@
+@import '~@/colors';
+
+.clear{
+    color: @grey;
+    text-align: center;
+    margin-top: .6rem;
+}
+
+.input{
+    :global{
+        .am-list-item{
+            background-color: @section;
+        }
+        .am-list-item.am-input-item{
+            height: 1.3rem;
+        }
+        .am-list-item .am-input-control input{
+            font-size: .4rem;
+            text-indent: .2rem;
+            color: #fff;
+        }
+    }
+}
+
+.item{
+    justify-content: space-between;
+    padding: .3rem;
+    .info{
+        color: @grey;
+        div:first-of-type{
+            margin-right: .3rem;
+        }
+    }
+    .collect,.collected{
+        flex: 0;
+        min-width: 1rem;
+        text-align: right;
+    }
+    .collect:before,.collected:before{
+        content:'\e675';
+        font-family: iconfont;
+        font-size: .5rem;
+    }
+    .collected:before{
+        color: @up;
+    }
+}

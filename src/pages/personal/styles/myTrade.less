@@ -1,0 +1,62 @@
+@import '~@/colors';
+
+.item{
+    padding: .35rem;
+    font-size: .37rem;
+    position: relative;
+    background-color: @section;
+    margin-top: .4rem;
+    color: #d5d5d5;
+    .header{
+        padding: .1rem 0;
+        font-size: .42rem;
+        color: #fff;
+        > div {
+            &:nth-of-type(1){
+                flex: 1.7;
+            }
+            &:nth-of-type(2){
+                text-align: right;
+            }
+        }
+        &:after{
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            height: 1px;
+            width: 100%;
+            top: 1.25rem;
+            background-color: @grey;
+        }
+        span{
+            margin-right: .2rem;
+            &:nth-of-type(3){
+                color: @grey;
+                font-size: .35rem;
+            }
+        }
+    }
+    .details,.details2{
+        margin-top: .5rem;
+        border-bottom: 1px solid @grey;
+        & > div{
+            min-width: 33%;
+            margin-left: 0;
+            margin-bottom: .3rem;
+        }
+    }
+    .details2{
+        margin-top: .3rem;
+        & > div{
+            min-width: 40%;
+        }
+    }
+    .submit{
+        padding: .4rem 0 0;
+        & > div{
+            flex: 0;
+            min-width: 45%;
+        }
+    }
+}

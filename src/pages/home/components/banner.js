@@ -11,7 +11,7 @@ export default class extends PureComponent{
     render(){
         return(
             <Carousel
-                autoplay={false}
+                autoplay={true}
                 infinite
                 autoplayInterval={5000}
             >

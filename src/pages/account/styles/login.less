@@ -1,0 +1,106 @@
+@import '~@/colors';
+.container{
+    .bg{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+    .mask{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        background-color: rgba(0,0,0,0.5);
+    }
+    .close{
+        position: absolute;
+        top: .7rem;
+        left: .6rem;
+        z-index: 5;
+        &:before{
+            content:'\e63d';
+            font-family: iconfont;
+            font-size: .4rem;
+        }
+    }
+    .content{
+        position: absolute;
+        z-index: 4;
+        width: 100%;
+        padding: 3rem 1rem 0;
+        .logo{
+            text-align: center;
+            margin-bottom: 1.5rem;
+            img{
+                width: 5.5rem;
+            }
+        }
+        .inputs{
+            display: block;
+            margin-bottom: 1rem;
+            :global{
+                .am-list-item.am-input-item{
+                    height: 1.3rem;
+                }
+                .am-list-item{
+                    background-color: transparent;
+                    border-bottom: 1px solid #fff;
+                }
+                .am-list-item .am-input-control {
+                    padding-top: .2rem;
+                }
+                .am-list-item .am-input-control input{
+                    font-size: .46rem;
+                }
+                .am-list-item .am-input-extra{
+                    font-size: .4rem;
+                    color: #fff;
+                    max-height: 1rem;
+                }
+                .am-checkbox-agree{
+                    justify-content: flex-end;
+                }
+                .am-checkbox-agree .am-checkbox{
+                    right: 1.5rem;
+                    top: -.1rem;
+                    left: auto;
+                }
+                .am-checkbox-agree .am-checkbox-agree-label{
+                    font-size: .25rem;
+                    color: #fff;
+                    zoom: 1.5;
+                }
+                .am-checkbox-inner{
+                    border-radius: 5px;
+                }
+            }
+        }
+        .submit{
+            font-size: .4rem;
+            margin-bottom: 1rem;
+            :global{
+                .am-button{
+                    height: 1.2rem;
+                    line-height: 1.2rem;
+                }
+            }
+        }
+        .extra{
+            padding: 0 2rem;
+            font-size: .4rem;
+            text-align: center;
+            div:first-of-type{
+                color: @grey;
+                border-right: 2px solid @grey;
+            }
+            :global{
+                .am-flexbox-item{
+                    margin-left: 0 !important;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,57 @@
+@import '~@/colors';
+
+.info{
+    padding: .32rem .8rem;
+    .name-code{
+        flex:1.7;
+        div{
+            &:nth-of-type(1){
+                font-size: .4rem;
+            }
+            &:nth-of-type(2){
+                font-size: .34rem;
+                color: @grey;
+                margin-top: .26rem;
+            }
+        }
+    }
+    .total-fee{
+        font-size: .46rem;
+    }
+}
+.input-num{
+    div:nth-of-type(1){
+        flex: 0;
+        min-width: 1.4rem;
+    }
+    :global{
+        .am-button{
+            margin-left: .2rem;
+            text-overflow: initial;
+        }
+        .am-button-small{
+            padding: 0 8px;
+            font-size: .3rem;
+        }
+    }
+    .input{
+        border: 1px solid #fff;
+        width: 5rem;
+        height: .7rem;
+        line-height: .7rem;
+        text-align: center;
+        color: #fff;
+        margin-left: .2rem;
+        font-size: .35rem;
+    }
+}
+:global{
+    .am-list-body{
+        //background-color: @section !important;
+    }
+}
+.total{
+    text-align: right;
+    padding: .3rem .5rem;
+}
+

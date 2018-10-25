@@ -21,6 +21,9 @@ export default class extends PureComponent {
         this._getData()
         this.id = setInterval(this._getData,3000)
     }
+    componentWillUnmount(){
+        clearInterval(this.id)
+    }
 
     _getData = () => {
         MarketPrice().then(data => {
@@ -30,7 +33,7 @@ export default class extends PureComponent {
                     const key = item['key']
                     item['value'] = data[key].最新价
                     item['increase'] = data[key].涨跌
-                    item['percents'] = (data[key].涨跌 / data[key].最新价 * 100).toFixed(2)
+                    item['percents'] = data[key].最新价 != 0 ?(data[key].涨跌 / data[key].最新价 * 100).toFixed(2) : 0
                 }
                 this.setState({
                     list:[...list]

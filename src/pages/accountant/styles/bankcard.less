@@ -1,0 +1,38 @@
+@import '~@/colors';
+
+.card-wrap {
+    height: 16.54rem;
+    background-color: #fff;
+    background-image: url('../images/bg.jpg');
+    background-repeat: no-repeat;
+    .card{
+        padding: 1rem;
+        .icon {
+            flex: 0.3;
+            img {
+                width: 1.5rem;
+                border-radius: 50%;
+            }
+        }
+        .info {
+            > div{
+                &:nth-of-type(1) {
+                    font-size: .65rem;
+                }
+                &:nth-of-type(2) {
+                    font-size: .3rem;
+                    margin: .15rem 0 .4rem;
+                }
+                &:nth-of-type(3) {
+                    font-size: .6rem;
+                }
+            }
+        }
+    }
+    .tip{
+        padding: 0 .6rem;
+        color: #000;
+        font-size: .38rem;
+    }
+}
+

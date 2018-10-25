@@ -48,7 +48,9 @@ export default class extends PureComponent {
     render() {
         const {data,nomore,list,page} = this.props;
         if(list.length === 0) return null
-        const headerHeight = document.getElementById('header').clientHeight
+        const header = document.getElementById('header')
+        if(!header) return null
+        const headerHeight = header.clientHeight
         const footerHeight = document.getElementById('footer').clientHeight
         const hei = document.body.offsetHeight - headerHeight - footerHeight;
         return (

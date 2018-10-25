@@ -20,6 +20,9 @@
             }
             & div:first-of-type {
                 margin-bottom: .13rem;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                width: 1.5rem;
             }
             & div:nth-of-type(2) {
                 font-size: .3rem;
@@ -30,20 +33,26 @@
     .input{
         flex: 1;
         :global{
+            .am-list-item{
+                background-color: #fff;
+            }
             .am-list-item.am-input-item{
                 height: .8rem;
+                line-height: .8rem;
                 padding-left: .15rem;
             }
             .am-list-item.am-input-item:before{
                 content:'\e600';
                 font-family: iconfont;
-                font-size: .33rem;
+                font-size: .4rem;
                 color: #ddd;
                 margin-right: .1rem;
-                margin-top: -.2rem;
+                margin-top: -.1rem;
             }
             .am-list-item .am-input-control input{
                 font-size: .33rem;
+                padding-top: .15rem;
+                line-height: 0;
             }
         }
     }

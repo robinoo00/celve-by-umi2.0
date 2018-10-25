@@ -24,4 +24,20 @@
             margin-top: .2rem;
         }
     }
+    .empty{
+        font-size: .4rem;
+        text-align: center;
+        padding: .5rem 0;
+        span{
+            position: relative;
+            &:before{
+                content: '\E604';
+                position: absolute;
+                font-family: iconfont;
+                font-size: 0.5rem;
+                margin-right: 0.1rem;
+                left: -0.6rem;
+            }
+        }
+    }
 }

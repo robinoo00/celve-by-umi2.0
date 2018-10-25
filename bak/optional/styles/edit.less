@@ -1,0 +1,39 @@
+@import '~@/colors';
+
+.container{
+    padding: .4rem;
+    .item{
+        border-bottom: 1px solid @borderBtoom;
+        justify-content: space-between;
+        padding: .3rem 0;
+        .unchoose:before,.choose:before{
+            content:'\e604';
+            font-family: iconfont;
+            font-size: .67rem;
+            line-height: 0;
+        }
+        .choose:before{
+            content:'\e64a';
+            color: @up;
+        }
+        .info{
+            padding-left: .4rem;
+            > div{
+                &:nth-of-type(2){
+                    color: @grey;
+                    font-size: .3rem;
+                    margin-top: .2rem;
+                }
+            }
+        }
+        .to-top{
+            flex: 0;
+            min-width: 1rem;
+            &:before{
+                content:'\e645';
+                font-family: iconfont;
+                font-size: .6rem;
+            }
+        }
+    }
+}

@@ -17,17 +17,17 @@ export default class extends PureComponent {
                         <div>A股点买</div>
                     </div>
                 </Flex>
-                <Flex  onClick={() => {router.push('/optional/edit')}}>
+                <Flex onClick={() => {router.push('/optional')}}>
                     <div styleName="icon"></div>
                     <div styleName="con">
-                        <div>策略</div>
+                        <div>自选</div>
                         <div>A股点买</div>
                     </div>
                 </Flex>
-                <Flex>
+                <Flex onClick={() => {router.push('/personal/financialDetails')}}>
                     <div styleName="icon"></div>
                     <div styleName="con">
-                        <div>策略</div>
+                        <div>明细</div>
                         <div>A股点买</div>
                     </div>
                 </Flex>

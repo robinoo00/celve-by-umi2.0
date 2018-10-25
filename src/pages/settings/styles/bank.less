@@ -1,0 +1,50 @@
+@import '~@/colors';
+
+.inputs{
+    .send-code{
+        color: @warn;
+        position: relative;
+        font-size: .35rem;
+        &:before{
+            content:'';
+            display: block;
+            position: absolute;
+            left: -.6rem;
+            top: -.2rem;
+            width: 2px;
+            height: .8rem;
+            background-color: @warn;
+        }
+    }
+    :global{
+        .am-list-item .am-input-extra{
+            font-size: .35rem;
+            max-height: 1rem;
+            overflow: visible;
+            margin-left: 1.5rem;
+        }
+        .am-list-item.am-input-item{
+            height: 1.5rem;
+        }
+        .am-list-item{
+            background-color: @section;
+        }
+        .am-list-item .am-input-control input{
+            color: #fff !important;
+            font-size: .4rem;
+            text-align: right;
+        }
+        .am-list-item .am-input-label{
+            color: #fff;
+            font-size: .4rem;
+        }
+        .am-list-item .am-input-label.am-input-label-5{
+            width: 1.7rem;
+        }
+        .am-list-item .am-list-line .am-list-content{
+            color: #fff;
+            font-size: .4rem;
+        }
+
+    }
+}

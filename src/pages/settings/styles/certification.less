@@ -1,0 +1,66 @@
+@import '~@/colors';
+.tip1,.tip2{
+    font-size: .3rem;
+    padding-left: 15px;
+    line-height: .4rem;
+}
+.tip1{
+    margin: .2rem 0;
+}
+.tip2{
+    color: @warn;
+    margin: .3rem 0 1rem;
+}
+.inputs{
+    :global{
+        .am-list-item.am-input-item{
+            height: 1.5rem;
+        }
+        .am-list-item{
+            background-color: @section;
+        }
+        .am-list-item .am-input-control input{
+            color: #fff !important;
+            font-size: .4rem;
+        }
+        .am-list-item .am-input-label{
+            color: #fff;
+            font-size: .4rem;
+        }
+        .am-list-item .am-input-label.am-input-label-5{
+            width: 1.7rem;
+        }
+    }
+}
+.imgs-container{
+    justify-content: space-around;
+    background-color: @section;
+    padding: .5rem .4rem;
+    margin-top: .4rem;
+    .item{
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 0 .3rem;
+        .file{
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+        .icon{
+            img{
+                width: 100%;
+                height: 2.5rem;
+                display: block;
+            }
+        }
+        .btn{
+            line-height: .7rem;
+            text-align: center;
+            font-size: .35rem;
+            background-color: @up;
+        }
+    }
+}
