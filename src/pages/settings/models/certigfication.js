@@ -1,5 +1,6 @@
 import {RealName} from '@/services/api'
 import {modal} from '@/utils/common'
+import router from 'umi/router'
 
 export default {
     namespace: 'certification',
@@ -52,13 +53,24 @@ export default {
             let formData = new FormData();
             const keys = Object.keys(payload)
             for(let key of keys){
-                formData.append(key,payload[key])
+                if(key === 'pic1'){
+                    formData.append('file',payload[key], "file_" + Date.parse(new Date()) + ".jpg")
+                }
+                if(key === 'pic2'){
+                    formData.append('file',payload[key], "file_" + Date.parse(new Date()) + ".jpg")
+                }
+                if(key != 'pic1' && key != 'pic2'){
+                    formData.append(key,payload[key])
+                }
             }
             const data = yield call(RealName,formData)
             if(data){
                 modal(data.msg,() => {
-                    console.log(123)
+                    if(data.rs){
+                        router.push('/personal')
+                    }
                 })
+                return data
             }
         }
     }

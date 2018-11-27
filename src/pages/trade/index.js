@@ -1,9 +1,9 @@
 import {PureComponent} from 'react'
 import Header from './components/header'
 import Switch from './components/switch'
-import List from './components/list'
+import List from '../home/components/dynamic-list'
 import Submit from './components/submit'
-import K from './components/k2/'
+import K from './components/k/'
 import {connect} from 'dva'
 import {TRADE_CODE} from '@/utils/params'
 
@@ -25,6 +25,14 @@ export default class extends PureComponent{
                     code:code
                 })
             })
+    }
+    static getDerivedStateFromProps(props,state){
+        if(props.code && props.code != state.code){
+            return {
+                code:props.code
+            }
+        }
+        return null
     }
     _saveCode = (code) => {
         return new Promise(resolve => {

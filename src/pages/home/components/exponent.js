@@ -11,9 +11,9 @@ export default class extends PureComponent {
     id = 0
     state = {
         list:[
-            {title:'上证指数',value:0,increase:0,percents:0,key:'上证'},
-            {title:'深证指数',value:0,increase:0,percents:0,key:'深证'},
-            {title:'创业指数',value:0,increase:0,percents:0,key:'创业板'}
+            {title:'上证指数',value:'--',increase:'--',percents:'--',key:'上证'},
+            {title:'深证指数',value:'--',increase:'--',percents:'--',key:'深证'},
+            {title:'创业指数',value:'--',increase:'--',percents:'--',key:'创业板'}
         ]
     }
 
@@ -27,13 +27,15 @@ export default class extends PureComponent {
 
     _getData = () => {
         MarketPrice().then(data => {
-            if(data.rs){
+            if(data && data.rs){
                 let list = this.state.list
                 for(let item of list){
                     const key = item['key']
-                    item['value'] = data[key].最新价
-                    item['increase'] = data[key].涨跌
-                    item['percents'] = data[key].最新价 != 0 ?(data[key].涨跌 / data[key].最新价 * 100).toFixed(2) : 0
+                    if(data[key].最新价 != 0){
+                        item['value'] = data[key].最新价
+                        item['increase'] = data[key].涨跌
+                        item['percents'] = (data[key].涨跌 / data[key].最新价 * 100).toFixed(2) + '%'
+                    }
                 }
                 this.setState({
                     list:[...list]
@@ -53,7 +55,7 @@ export default class extends PureComponent {
                         <div styleName="total" data-color={item.increase > 0 ? "up" : "down"}>{item.value}</div>
                         <Flex styleName="detail" data-color={item.increase > 0 ? "up" : "down"}>
                             <div styleName="num">{item.increase}</div>
-                            <div styleName="percents">{item.percents}%</div>
+                            <div styleName="percents">{item.percents}</div>
                         </Flex>
                     </Flex.Item>
                 ))}

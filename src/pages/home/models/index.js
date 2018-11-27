@@ -1,3 +1,5 @@
+import {TradeDynamics} from '@/services/api'
+
 export default {
     namespace: 'home',
     state: {
@@ -5,5 +7,11 @@ export default {
     },
     subscriptions: {},
     reducers: {},
-    effects: {}
+    effects: {
+        *getTradeDynamics(_,{call}){
+            console.log(123)
+            const data = yield call(TradeDynamics)
+            return data
+        }
+    }
 }

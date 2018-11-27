@@ -72,7 +72,7 @@ export default class extends PureComponent {
                     {this._renderItem('策略类型','T+1')}
                     {this._renderItem('策略类型',`${item.Volume}股`)}
                     {this._renderItem('交易盈亏',earn)}
-                    {this._renderItem('盈利分配',item.Profit.toFixed(2))}
+                    {this._renderItem('盈利分配',item.Profit ? item.Profit.toFixed(2) : '--')}
                 </List>
             </List>
         )

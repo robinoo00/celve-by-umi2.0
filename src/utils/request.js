@@ -2,6 +2,7 @@ import fetch from 'dva/fetch';
 import setting from '@/defaultSettings'
 import {stringify} from 'qs'
 import Token from './token'
+import {alert} from '@/utils/common'
 
 function parseJSON(response) {
     return response.json();
@@ -55,7 +56,8 @@ export default function request(url, options) {
         .then(checkStatus)
         .then(parseJSON)
         .then(data => {
-            if(data.msg === '登陆错误'){
+            if(data.msg === '登陆错误' || data.msg === '未登陆'){
+                alert('账号过期，请重新登录')
                 token.noCidCallBack()
             }else{
                 return data

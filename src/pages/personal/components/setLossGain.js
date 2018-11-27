@@ -21,11 +21,11 @@ export default class extends PureComponent {
         });
     }
     _set = (params) => {
-        params.orderid = this.props.orderid
+        const {finish,data} = this.props
+        params.orderid = data.OrderID
         SetQuitGainLoss(params)
             .then(data => {
-                console.log(data)
-                alert(data.msg)
+                finish(data)
             })
     }
     _validateGain = (rule, value, callback) => {
@@ -38,8 +38,13 @@ export default class extends PureComponent {
         const {hide} = this.props
         hide()
     }
+    change = val => {
+        const {form} = this.props
+        console.log(val)
+    }
     render() {
-        const {form,visible} = this.props
+        const {form,visible,data} = this.props
+        if(!visible) return null
         return (
             <Modal
                 visible={visible}
@@ -63,10 +68,9 @@ export default class extends PureComponent {
                         <InputItem
                             placeholder={'请输入止盈余额'}
                             {...form.getFieldProps('quitGain',{
+                                initialValue:data.QuitGain,
                                 rules:[{
                                     required:true,message:'请输入止盈余额'
-                                }, {
-                                    validator: this._validateGain,
                                 }]
                             })}
                         />
@@ -76,10 +80,10 @@ export default class extends PureComponent {
                         <InputItem
                             placeholder={'请输入止损余额'}
                             {...form.getFieldProps('quitLoss',{
+                                initialValue:data.QuitLoss,
+                                onChange:this.change,
                                 rules:[{
                                     required:true,message:'请输入止损余额'
-                                }, {
-                                    validator: this._validateLoss,
                                 }]
                             })}
                         />

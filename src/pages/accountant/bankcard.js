@@ -5,6 +5,7 @@ import {Flex} from 'antd-mobile'
 import Header from '@/components/header/'
 import router from 'umi/router'
 import {connect} from 'dva'
+import {getBankLogo} from '@/utils/common'
 
 @connect(({personal}) => ({
     data:personal.data
@@ -23,7 +24,7 @@ export default class extends PureComponent {
                 <div styleName="card-wrap">
                     <Flex styleName="card">
                         <Flex.Item styleName="icon">
-                            <img src={'http://47.100.236.123:6601/dianmai/images/20171228101943.jpg'} alt=""/>
+                            <img src={getBankLogo(data.银行)} alt=""/>
                         </Flex.Item>
                         <Flex.Item styleName="info">
                             <div>{data.银行}</div>

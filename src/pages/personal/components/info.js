@@ -33,7 +33,7 @@ export default class extends PureComponent {
                             <img src={person}/>
                         </Flex.Item>
                         <Flex.Item styleName="account">
-                            <div styleName="nickname">{data.名称 || '路人'}</div>
+                            <div styleName="nickname">{data.名字 || '路人'}</div>
                             <Flex styleName="money">
                                 <Flex.Item styleName="money-item">
                                     <span>{data.余额}</span>
@@ -47,8 +47,12 @@ export default class extends PureComponent {
                         </Flex.Item>
                     </Flex>
                     <Flex styleName="actions">
-                        <Button type={'primary'} onClick={() => {router.push('accountant/recharge')}}>充值</Button>
-                        <Button onClick={() => {router.push('accountant/withdraw')}}>提现</Button>
+                        <Flex.Item>
+                            <Button type={'primary'} onClick={() => {router.push('accountant/recharge')}}>充值</Button>
+                        </Flex.Item>
+                        <Flex.Item>
+                            <Button onClick={() => {router.push('accountant/withdraw')}}>提现</Button>
+                        </Flex.Item>
                     </Flex>
                 </div>
             </div>

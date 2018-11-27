@@ -1,4 +1,5 @@
 import {Toast,Modal} from 'antd-mobile'
+import {port} from '@/defaultSettings'
 
 export async function alert(content,duration = 1,onClose,mask = false){
     Toast.info(content,duration,null,mask)
@@ -73,4 +74,137 @@ export function getHeight(exclude = []) {
         hei -= document.getElementById(id).clientHeight
     }
     return hei
+}
+
+/*获取银行LOGO*/
+export function getBankLogo(name){
+    let prefix = port + '/dianmai/images/'
+    let src = ''
+    switch (name){
+        case '工商银行' || '中国工商银行':
+            src = '20171228101805.jpg'
+            break
+        case '农业银行' || '中国农业银行':
+            src = '20171228101943.jpg'
+            break
+        case '中国银行':
+            src = '20171228102035.jpg'
+            break
+        case '建设银行' || '中国建设银行':
+            src = '20171228101914.jpg'
+            break
+        case '光大银行':
+            src = '20171228101841.jpg'
+            break
+        case '华夏银行' || '中国华夏银行':
+            src = '20171228101848.jpg'
+            break
+        case '北京银行':
+            src = '20171228101826.jpg'
+            break
+        case '交通银行' || '中国交通银行':
+            src = '20171228101930.jpg'
+            break
+        case '上海银行':
+            src = '20171228102012.jpg'
+            break
+        case '中国邮政' || '中国邮政储蓄银行':
+            src = '20171228102020.jpg'
+            break
+        case '招商银行' || '中国招商银行':
+            src = 'timg.jpg'
+            break
+        default:
+            src = 'icon_big.png'
+    }
+    return prefix + src
+}
+
+//获取当前时间戳
+function time(time = '') {
+    if(time){
+        return Math.floor(new Date(time).getTime() / 1000);
+    }else{
+        return Math.floor(new Date().getTime() / 1000);
+    }
+}
+function rebuildTime(time) {
+    if(time.includes('-')){
+        time = time.replace(/\-/g, "/");
+    }
+    return time
+}
+/*友好时间显示方法  参数：例子2018-1-1*/
+export function mdate($time) {
+    var time_stamp = time(rebuildTime($time))
+    var now_d = new Date();
+    var now_time = now_d.getTime() / 1000; //获取当前时间的秒数
+    var f_d = new Date();
+    f_d.setTime(time_stamp * 1000);
+    var f_time = f_d.toLocaleDateString();
+
+    var ct = now_time - time_stamp;
+    var day = 0;
+    if (ct < 0)
+    {
+        f_time = "【预约】" + f_d.toLocaleString();
+    }
+    else if (ct < 60)
+    {
+        f_time = Math.floor(ct) + '秒前';
+    }
+    else if (ct < 3600)
+    {
+        f_time = Math.floor(ct / 60) + '分钟前';
+    }
+    else if (ct < 86400)//一天
+    {
+        f_time = Math.floor(ct / 3600) + '小时前';
+    }
+    else if (ct < 604800)//7天
+    {
+        day = Math.floor(ct / 86400);
+        if (day < 2)
+            f_time = '昨天';
+        else
+            f_time = day + '天前';
+    }
+    else
+    {
+        day = Math.floor(ct / 86400);
+        f_time = day + '天前';
+    }
+    return f_time;
+}
+
+/*添加股票代码前缀0 SZ 6 SH*/
+export function reBuildCode(code){
+    const firstNum = Number([...code][0])
+    if(firstNum === 0){
+        code = 'SZ' + code
+    }
+    if(firstNum === 1){
+        code = 'SH' + code
+    }
+    return code
+}
+
+export function getDPR(){
+    const dpr = document.getElementsByTagName('html')[0].getAttribute("data-dpr");
+    return dpr
+}
+/*base64 转图片*/
+export function dataURLtoFile(dataurl, filename){//将base64转换为文件
+    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+    while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], { type: mime });
+    // var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+    //     bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+    // while(n--){
+    //     u8arr[n] = bstr.charCodeAt(n);
+    // }
+    // return new File([u8arr], filename, {type:mime});
 }

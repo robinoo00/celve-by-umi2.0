@@ -15,7 +15,7 @@ import {connect} from 'dva'
 export default class extends PureComponent {
     state = {
         data: null,
-        collected: false
+        collected: false,
     }
     sid = 0
     /*
@@ -26,11 +26,29 @@ export default class extends PureComponent {
     * */
     componentDidMount() {
         const code = this.props.code
+        this.init(code)
+    }
+    init = (code) => {
+        clearInterval(this.sid)
         this._judgeCollect(code) //判断是否收藏
         this._getData(code)
         this.sid = setInterval(() => {
             this._getData(code)
         },1000)
+    }
+    componentDidUpdate(prevProps, prevState) {
+        if(prevState.code != this.state.code){
+            this.init(this.state.code)
+        }
+    }
+    static getDerivedStateFromProps(props,state){
+        if(props.code && props.code != state.code){
+            return {
+                code:props.code,
+                data:null
+            }
+        }
+        return null
     }
     componentWillUnmount(){
         clearInterval(this.sid)
@@ -39,7 +57,7 @@ export default class extends PureComponent {
     _judgeCollect = (code) => {
         return new Promise(resolve => {
             const list = this.props.collectList
-            const item = list.filter(item => item.code.toLowerCase() === code)[0]
+            const item = list.filter(item => item.code.toLowerCase() === code.toLowerCase())[0]
             if (item) {
                 this._assignCollected(true)
             } else {
@@ -61,7 +79,7 @@ export default class extends PureComponent {
                     })
                 }else{
                     clearInterval(this.sid)
-                    modal('股票信息获取失败', () => {
+                    modal(`${code}的股票信息获取失败`, () => {
                         router.push('/optional')
                     })
                 }

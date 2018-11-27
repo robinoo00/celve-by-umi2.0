@@ -34,7 +34,9 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
+    "autoprefixer": "^9.3.1",
     "lib-flexible": "^0.3.2",
+    "lrz": "^4.9.40",
     "qs": "^6.5.2",
     "react-addons-css-transition-group": "^15.6.2",
     "react-hammerjs": "^1.0.1",

@@ -6,7 +6,7 @@ import {CID} from '@/utils/params'
 
 export default class extends PureComponent {
     state = {
-        seconds:5,
+        seconds:60,
         connect:false,//连接使用 如果不相等 则为开
         send_text:'获取验证码'
     }
@@ -25,11 +25,11 @@ export default class extends PureComponent {
                 })
             }
         }else{//注册发送验证码
-            if(!phone){
-                alert('请输入手机号码')
-                return
-            }
             if(this.state.connect != connect && this.can_send){
+                if(!phone){
+                    alert('请输入手机号码')
+                    return
+                }
                 this.setState({
                     connect:connect
                 },() => {
@@ -61,7 +61,7 @@ export default class extends PureComponent {
                             this.can_send = true
                             this.setState({
                                 send_text:'获取验证码',
-                                seconds:5,
+                                seconds:60,
                             })
                         }
                     });
@@ -90,6 +90,7 @@ export default class extends PureComponent {
         })
     }
     render() {
+        console.log(123)
         const {send_text} = this.state
         return (
             <div>

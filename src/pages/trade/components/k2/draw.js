@@ -9,7 +9,8 @@ export default class extends Base {
         this.开始条数 = this.data.length-this.K线显示柱条数
         this.结束条数 = this.data.length
         this.单位宽度 = this.画布.width / this.K线显示柱条数
-        this.距顶距离 = document.getElementById(this.id).offsetTop
+        this.距顶距离 = document.getElementById('kcanvas').offsetTop
+        console.log(this.距顶距离)
     }
     loading() {
         this.画布上下文.clearRect(0, 0, this.画布.width, this.画布.height);
@@ -82,13 +83,15 @@ export default class extends Base {
     }
     /*绘制十字线*/
     _drawCross(x,y){
+        console.log('y',y)
+        console.log('距顶距离',this.距顶距离)
         this.画布上下文.font = "15px sans-serif";
         this.画布上下文.beginPath();
         this.画布上下文.strokeStyle = '#c3c3c3';
-        this.画布上下文.moveTo(0, y - this.距顶距离);
-        this.画布上下文.lineTo(this.画布.width, y - this.距顶距离);
-        this.画布上下文.moveTo(x, 0);
-        this.画布上下文.lineTo(x, this.画布.height);
+        this.画布上下文.moveTo(0, (y - this.距顶距离) / 1.5);
+        this.画布上下文.lineTo(this.画布.width, (y - this.距顶距离) / 1.5);
+        this.画布上下文.moveTo(x / 1.5, 0);
+        this.画布上下文.lineTo(x / 1.5, this.画布.height);
         this.画布上下文.stroke();
         this.画布上下文.restore();
     }

@@ -8,8 +8,9 @@ import {createForm} from 'rc-form'
 import Submit from '@/components/submit/'
 import front from '@/assets/IDCardFront.png'
 import back from '@/assets/IDCardBack.png'
-import {alert} from '@/utils/common'
+import {alert,dataURLtoFile} from '@/utils/common'
 import router from 'umi/router'
+import lrz from 'lrz'
 
 @createForm()
 @connect(({certification}) => ({
@@ -40,14 +41,37 @@ export default class extends PureComponent {
     _pickImg = (type) => (e) => {
         const {dispatch} = this.props
         const file = e.target.files[0];
-        dispatch({
-            type:'certification/assignID',
-            payload:{
-                file:file,
-                src:window.URL.createObjectURL(file),
-                type:type
-            }
-        })
+        const fileNameArr = file.name.split('.')
+        const suffix = fileNameArr[fileNameArr.length - 1]
+        if(file.size > 1024 * 1024){
+            console.log(123)
+            lrz(file,{
+                quality: 0.7,
+                width: 1024,
+            }).then(rst => {
+                // console.log(file)
+                // console.log(dataURLtoFile(rst.base64))
+                const file_name = Date.parse(new Date())
+                dispatch({
+                    type:'certification/assignID',
+                    payload:{
+                        file:dataURLtoFile(rst.base64),
+                        // file:rst.file,
+                        src:window.URL.createObjectURL(file),
+                        type:type
+                    }
+                })
+            })
+        }else{
+            dispatch({
+                type:'certification/assignID',
+                payload:{
+                    file:file,
+                    src:window.URL.createObjectURL(file),
+                    type:type
+                }
+            })
+        }
     }
     _checkImg = () => {
         const {IDFront,IDBack} = this.props
@@ -109,7 +133,7 @@ export default class extends PureComponent {
         return (
             <Flex styleName="imgs-container">
                 <Flex.Item styleName="item">
-                    <input type="file" styleName="file" onChange={this._pickImg('front')}/>
+                    <input type="file" styleName="file" accept="image/*" onChange={this._pickImg('front')}/>
                     <div styleName="icon">
                         <img src={IDFront.src || front} alt=""/>
                     </div>

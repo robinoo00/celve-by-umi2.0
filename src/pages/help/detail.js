@@ -3,6 +3,7 @@ import {Flex} from 'antd-mobile'
 import Header from '@/components/header/'
 import {connect} from 'dva'
 import {GetNewContent} from '@/services/api'
+import styles from './styles/detail.less'
 
 @connect(({help,routing}) => ({
     list:help.list,
@@ -45,7 +46,7 @@ export default class extends PureComponent {
                 <Header
                     title={this.Title}
                 />
-                <div style={{backgroundColor:'#e6e6e7',color:'#000',fontSize:'.4rem'}}>
+                <div className={styles.container}>
                     <div dangerouslySetInnerHTML={{
                         __html: Text
                     }}></div>

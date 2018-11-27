@@ -1,9 +1,9 @@
 import {PureComponent} from 'react'
 import {Carousel} from 'antd-mobile'
 
-import ban1 from '../images/banner1.png'
-import ban2 from '../images/banner2.png'
-import ban3 from '../images/banner3.png'
+import ban1 from '@/assets/banner1.png'
+import ban2 from '@/assets/banner2.png'
+import ban3 from '@/assets/banner3.png'
 
 const list = [ban1,ban2,ban3]
 

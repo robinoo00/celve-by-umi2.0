@@ -4,8 +4,8 @@ import {getFormatTime} from '@/utils/common'
 export default class {
     constructor(params) {
         const id = params.id
-        const height = params.height
-        const window_width = window.screen.width
+        let height = params.height
+        let window_width = window.screen.width
         this.id = id
         this.类型 = '分时'
         this.data = []

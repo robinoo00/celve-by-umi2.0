@@ -1,12 +1,12 @@
 import {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import styles from './styles/confirm.less'
-import {Flex, List, Button} from 'antd-mobile'
+import {Flex, List, Button, InputItem} from 'antd-mobile'
 import Header from '@/components/header/'
 import {GetShares, TradeConfig, CreateOrder} from '@/services/api'
 import {connect} from 'dva'
 import Submit from '@/components/submit/'
-import {alert} from '@/utils/common'
+import {alert,modal} from '@/utils/common'
 import router from 'umi/router'
 
 const Item = Flex.Item
@@ -24,7 +24,7 @@ export default class extends PureComponent {
         num: 100,
         result: null
     }
-
+    sending = false
     componentDidMount() {
         const params = {
             code: this.props.code,
@@ -64,7 +64,7 @@ export default class extends PureComponent {
             let 点买金额 = data.当前价格 * num * strRisk.tradingCountRatio.value
             点买金额 = Math.ceil(点买金额 / 100) * 100
             let 交易综合费 = 点买金额 / 10000 * strRisk.openFee.value
-            console.log('交易综合费',交易综合费)
+            // console.log('交易综合费',交易综合费)
             const result = {
                 点买金额: 点买金额,
                 触发止盈: 点买金额 * strRisk.quitGainRatioList.value,
@@ -103,12 +103,22 @@ export default class extends PureComponent {
     _handleNum = (val) => () => {
         let num = this.state.num
         num = num + val <= 100 ? 100 : num + val
+        this.assignNum(num)
+    }
+    assignNum = val => {
+        if(isNaN(val)) return
         this.setState({
-            num: num
+            num: Number(val)
+        },() => {
+            this._calculate()
         })
-        this._calculate()
     }
     _submit = () => {
+        if(this.sending) return ;
+        this.sending = true
+        setTimeout(() => {
+            this.sending = false
+        },500)
         const {result, data, num} = this.state
         const params = {
             money: result.点买金额,
@@ -121,9 +131,12 @@ export default class extends PureComponent {
             volume: num
         }
         CreateOrder(params).then(data => {
-            alert(data.msg)
             if(data.rs){
-                router.push('/personal/myTrade')
+                modal(data.msg,() => {
+                    router.push('/personal/myTrade')
+                })
+            }else{
+                alert(data.msg)
             }
         })
     }
@@ -150,12 +163,28 @@ export default class extends PureComponent {
                 <LItem>
                     <Flex styleName="input-num">
                         <Item>数量</Item>
-                        <Flex>
-                            <Button type={"primary"} size={"small"} onClick={this._handleNum(-1000)}>-1000</Button>
-                            <Button type={"primary"} size={"small"} onClick={this._handleNum(-100)}>-100</Button>
-                            <div styleName="input">{num}</div>
-                            <Button type={"primary"} size={"small"} onClick={this._handleNum(100)}>+100</Button>
-                            <Button type={"primary"} size={"small"} onClick={this._handleNum(1000)}>+1000</Button>
+                        <Flex styleName={'con'}>
+                            <Flex.Item>
+                                <Button type={"primary"} size={"small"} onClick={this._handleNum(-1000)}>-1000</Button>
+                            </Flex.Item>
+                            <Flex.Item>
+                                <Button type={"primary"} size={"small"} onClick={this._handleNum(-100)}>-100</Button>
+                            </Flex.Item>
+                            <Flex.Item>
+                                <InputItem
+                                    styleName="input"
+                                    value={num}
+                                    onChange={this.assignNum}
+                                    type={'number'}
+                                />
+                                {/*<div styleName="input">{num}</div>*/}
+                            </Flex.Item>
+                            <Flex.Item>
+                                <Button type={"primary"} size={"small"} onClick={this._handleNum(100)}>+100</Button>
+                            </Flex.Item>
+                            <Flex.Item>
+                                <Button type={"primary"} size={"small"} onClick={this._handleNum(1000)}>+1000</Button>
+                            </Flex.Item>
                         </Flex>
                     </Flex>
                 </LItem>
@@ -175,16 +204,16 @@ export default class extends PureComponent {
                     })}
                     {this._renderItem({
                         title: '持仓时间',
-                        con: 'T+1|D'
+                        con: 'T+1'
                     })}
                     {this._renderItem({
                         title: '买入类型',
                         con: '市价买入'
                     })}
-                    {this._renderItem({
-                        title: '递延条件',
-                        con: `盈亏≥${result.递延条件}`
-                    })}
+                    {/*{this._renderItem({*/}
+                        {/*title: '递延条件',*/}
+                        {/*con: `盈亏≥${result.递延条件}`*/}
+                    {/*})}*/}
                     {this._renderItem({
                         title: '盈利分成',
                         con: result.盈利分成 + '%'
@@ -193,7 +222,7 @@ export default class extends PureComponent {
                 <LItem>
                     {this._renderItem({
                         title: '交易综合费',
-                        money: result.交易综合费
+                        money: Math.ceil(result.交易综合费 *100) /100
                     })}
                     {this._renderItem({
                         title: '履约保证金',

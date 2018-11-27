@@ -13,6 +13,7 @@ import {connect} from 'dva'
 @CSSModules(styles)
 
 export default class extends PureComponent {
+    sid = 0
     componentDidMount(){
         const {config,dispatch} = this.props
         if(!config){
@@ -20,6 +21,24 @@ export default class extends PureComponent {
                 type:'base/getConfig'
             })
         }
+        this.isTradeTime()
+    }
+    isTradeTime = () => {
+        const {dispatch,canTrade,config} = this.props
+        this.sid = setInterval(() => {
+            if(!canTrade && config){
+                dispatch({
+                    type:'base/assignCanTrade',
+                    config:config
+                })
+            }
+            if(canTrade){
+                clearInterval(this.sid)
+            }
+        },1000)
+    }
+    componentWillUnmount(){
+        clearInterval(this.sid)
     }
     render() {
         const {canTrade,code} = this.props

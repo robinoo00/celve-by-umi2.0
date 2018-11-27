@@ -22,15 +22,16 @@ export default class extends PureComponent {
         const {data} = this.props
         if(!data) return null
         return (
-            <div styleName="container">
-                <Flex>
-                    <Flex styleName="personal-info" onClick={() => {router.push('/personal')}}>
-                        <img styleName="icon" src={personIcon} alt=""/>
-                        <div styleName="detail">
-                            <div>{data.名字 || '路人'}</div>
-                            <div>({data.状态})</div>
-                        </div>
-                    </Flex>
+                <Flex styleName="container">
+                    <Flex.Item styleName="personal-info">
+                        <Flex onClick={() => {router.push('/personal')}}>
+                            <img styleName="icon" src={personIcon} alt=""/>
+                            <div styleName="detail">
+                                <div>{data.名字 || '路人'}</div>
+                                <div>({data.状态})</div>
+                            </div>
+                        </Flex>
+                    </Flex.Item>
                     <Flex.Item styleName="input" onClick={() => {router.push('/optional/search')}}
                     >
                         <InputItem
@@ -40,7 +41,6 @@ export default class extends PureComponent {
                     </Flex.Item>
                     <Flex.Item styleName="help" onClick={() => {router.push('help')}}></Flex.Item>
                 </Flex>
-            </div>
         )
     }
 }

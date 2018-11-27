@@ -22,7 +22,7 @@ export default class extends PureComponent {
     state = {
         list:[
             {title: '用户名', extra: '', key: '名字', arrow: 'empty', url: null},
-            {title: '实名认证', extra: '', key: '身份证', arrow: 'horizontal', url: '/settings/certification'},
+            {title: '实名认证', extra: '', key: '状态', arrow: 'horizontal', url: '/settings/certification'},
             {title: '银行卡', extra: '', key: '银行', arrow: 'horizontal', url: 'accountant/bankcard'},
             {title: '手机绑定', extra: '', key: '账号', arrow: 'empty', url: null},
         ]
@@ -43,11 +43,11 @@ export default class extends PureComponent {
         let list = this.state.list
         for(let item of list){
             item['extra'] = datas[item['key']]
-            if(item['key'] === '身份证'){
-                if(!datas[item['key']]){
-                    item['extra'] = datas['状态']
-                }
-            }
+            // if(item['key'] === '身份证'){
+            //     if(!datas[item['key']]){
+            //         item['extra'] = datas['状态']
+            //     }
+            // }
         }
         this.setState({
             list:[...list]
@@ -58,7 +58,7 @@ export default class extends PureComponent {
         router.push('/account/login')
     }
     _link = (item) => () => {
-        if(item.key === '身份证'){
+        if(item.key === '状态'){
             if(item.extra === '审核中'){
                 modal('审核中，请耐心等待');
                 return

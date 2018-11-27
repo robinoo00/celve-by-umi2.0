@@ -1,22 +1,20 @@
-import {PureComponent} from 'react'
-import CSSModules from 'react-css-modules'
-import styles from './styles/tpl.less'
-import {Flex} from 'antd-mobile'
-import CountDown from '@/components/countDown/'
-import K from '../trade/components/k2/'
-import {connect} from 'dva'
+import React from 'react'
 
-@connect(({routing}) => ({
-    code:routing.location.query.code
-}))
-@CSSModules(styles)
-
-export default class extends PureComponent {
-    render() {
-        return (
-            <div>
-                <K code={this.props.code}/>
-            </div>
+export default class extends React.PureComponent{
+    componentDidMount(){
+        const id = 'k'
+        this.画布 = document.getElementById(id)
+        this.画布.width = window.screen.width * 1.5
+        this.画布上下文 = this.画布.getContext("2d")
+        this.画布上下文.fillStyle = '#11ff5a'
+        this.画布上下文.fillRect(0, 0, this.画布.width, 400)
+    }
+    render(){
+        return(
+            <canvas
+                id={'k'}
+                style={{zoom:0.5}}
+            ></canvas>
         )
     }
 }

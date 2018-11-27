@@ -1,54 +1,40 @@
 import {PureComponent} from 'react'
-import CSSModules from 'react-css-modules'
-import styles from '../styles/dynamic-list.less'
-import {Flex,Button} from 'antd-mobile'
-import person from '@/assets/person.png'
+import {connect} from 'dva'
+import router from 'umi/router'
+import {reBuildCode} from '@/utils/common'
+import Comp from './dynamic-list-comp'
 
-@CSSModules(styles)
+@connect()
 
 export default class extends PureComponent {
+    state = {
+        list:null
+    }
+    componentDidMount(){
+        console.log(123)
+        const {dispatch} = this.props
+        dispatch({
+            type:'home/getTradeDynamics'
+        }).then(list => {
+            if(list){
+                this.setState({
+                    list:list
+                })
+            }
+        })
+    }
+    _link = (code) => () => {
+        code = reBuildCode(code)
+        router.push({pathname:'trade',query:{code:code}})
+    }
     render() {
+        const {list} = this.state
+        if(!list) return null
         return (
-            <div styleName="container">
-                <Flex styleName="item">
-                    <Flex.Item>
-                        <Flex>
-                            <div styleName="headimg">
-                                <img src={person} alt=""/>
-                            </div>
-                            <div styleName="nickname">
-                                昵称111111
-                            </div>
-                        </Flex>
-                        <Flex styleName="detail">
-                            <div>16秒前</div>
-                            <div>金牛化</div>
-                        </Flex>
-                    </Flex.Item>
-                    <Flex.Item styleName="submit">
-                        <Button type={'primary'} size={'small'}>点买</Button>
-                    </Flex.Item>
-                </Flex>
-                <Flex styleName="item">
-                    <Flex.Item>
-                        <Flex>
-                            <div styleName="headimg">
-                                <img src={person} alt=""/>
-                            </div>
-                            <div styleName="nickname">
-                                昵称111111
-                            </div>
-                        </Flex>
-                        <Flex styleName="detail">
-                            <div>16秒前</div>
-                            <div>金牛化</div>
-                        </Flex>
-                    </Flex.Item>
-                    <Flex.Item styleName="submit">
-                        <Button type={'primary'} size={'small'}>点买</Button>
-                    </Flex.Item>
-                </Flex>
-            </div>
+            <Comp
+                list={list}
+                link={code => this._link(code)}
+            />
         )
     }
 }

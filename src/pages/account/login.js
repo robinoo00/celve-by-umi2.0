@@ -1,7 +1,7 @@
 import {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import styles from './styles/login.less'
-import {Flex,InputItem,Button,Checkbox} from 'antd-mobile'
+import {Flex,InputItem,Button,Checkbox,Toast} from 'antd-mobile'
 import bg from '@/assets/loginBGC.png'
 import logo from '@/assets/logo.png'
 import {createForm} from 'rc-form'
@@ -19,12 +19,14 @@ export default class extends PureComponent {
         const {form, dispatch} = this.props
         form.validateFields({force: true}, (error) => {
             if (!error) {
+                Toast.loading('登录中...',10)
                 let value = form.getFieldsValue();
                 dispatch({
                     type: 'account/login',
                     payload: {acc: value.account, pwd: value.password},
                 }).then((rs) => {
                     if(rs){
+                        Toast.hide()
                         localStorage.setItem(ACCOUNT,value.account)
                         localStorage.setItem(PASSWORD,value.password)
                         router.push('/personal')

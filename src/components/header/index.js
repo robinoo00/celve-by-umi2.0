@@ -14,7 +14,6 @@ export default class extends PureComponent {
         dispatch({
             type:'base/goBack',
         }).then(() => {
-            console.log(2)
             router.goBack()
         })
     }

@@ -20,7 +20,7 @@ export default class extends PureComponent {
         const list = [
             {title:'首页',url:'/home'},
             {title:'策略',url:'/trade'},
-            {title:'咨询',url:'/news'},
+            {title:'资讯',url:'/news'},
             {title:'自选',url:'/optional'},
             {title:'我的',url:'/personal'}
         ]

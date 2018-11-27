@@ -1,4 +1,5 @@
 import Base from './base'
+import {getDPR} from '@/utils/common'
 
 const work = window.work;
 
@@ -569,14 +570,16 @@ class Init extends Base {
         if (x > self.K线区宽度 - self.右边距) {
             xx = self.K线区宽度 - self.右边距
         };
+        var dpr = getDPR()
+        var coef = dpr / 2
         self.画布上下文.font = "15px sans-serif";
         self.画布上下文.save();
         self.画布上下文.beginPath();
         self.画布上下文.strokeStyle = self.十字线颜色;
-        self.画布上下文.moveTo(self.左边距 + self.左线边距, yy);
-        self.画布上下文.lineTo(self.K线区宽度 - self.右边距, yy);
-        self.画布上下文.moveTo(xx, self.上边距);
-        self.画布上下文.lineTo(xx, self.画布高度);
+        self.画布上下文.moveTo(self.左边距 + self.左线边距, yy/coef);
+        self.画布上下文.lineTo(self.K线区宽度 - self.右边距, yy/coef);
+        self.画布上下文.moveTo(xx/coef, self.上边距);
+        self.画布上下文.lineTo(xx/coef, self.画布高度);
         self.画布上下文.stroke();
         self.画布上下文.restore();
 
@@ -595,6 +598,7 @@ class Init extends Base {
         self.画布上下文.save();
 
         var kd = (self.K线区宽度 - self.左边距 - self.左线边距 - self.右边距) / self.新数组.length;
+        kd = kd * coef
         var 数据索引 = Math.floor((x - self.左边距 - self.左线边距) / kd);
         数据索引 = 数据索引 < 0 ? 0 : 数据索引;
         self.画布上下文.fillStyle = self.显示文本颜色;

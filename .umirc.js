@@ -2,13 +2,19 @@ export default {
     base: './',
     publicPath: './',
     history: 'hash',
-    browserslist: [
-        "> 1%",
-        "last 2 versions",
-        "iOS >= 7",
-        "Android > 4.1",
-        "Firefox > 20",
+    hash:true,
+    extraPostCSSPlugins:[
+        require('autoprefixer')({
+            browsers:['> 0%']
+        })
     ],
+    // proxy: {
+    //     "/api/": {
+    //         "target": "http://xxx.com/",
+    //         "changeOrigin": true,
+    //         "pathRewrite": { "^/api/" : "" }
+    //     }
+    // },
     plugins: [
         ['umi-plugin-react', {
             antd: true,

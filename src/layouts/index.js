@@ -22,11 +22,18 @@ export default class extends React.PureComponent {
             },100)
         }
     }
+    componentDidCatch(err, info) {
+        console.log(err)
+        console.log(info)
+        console.log('err',err.toString())
+        console.log('info',info.toString())
+        // this.setState({ hasError: true })
+        //sendErrorReport(err,info)
+    }
 
     render() {
         const {back, location, children} = this.props
         const pathname = location.pathname
-        console.log(back)
         return (
             <ReactCSSTransitionGroup
                 transitionName={back ? "slide-out" : 'slide-in'}

@@ -1,7 +1,7 @@
 import {PureComponent} from 'react'
 import CSSModules from 'react-css-modules'
 import styles from './styles/bank.less'
-import {Flex, InputItem, Picker, List} from 'antd-mobile'
+import {Flex, InputItem, Picker, List,Toast} from 'antd-mobile'
 import Header from '@/components/header/'
 import {banks, provinces} from './components/resource'
 import Submit from '@/components/submit'
@@ -49,9 +49,12 @@ export default class extends PureComponent {
                         ...data,
                         ...cData
                     }
+                    Toast.loading('上传中...',10)
                     dispatch({
                         type:'certification/submit',
                         payload:data
+                    }).then(data => {
+                        Toast.hide()
                     })
                 }
             } else {
@@ -118,7 +121,7 @@ export default class extends PureComponent {
     }
 
     render() {
-        const {form} = this.props
+        const {form,type} = this.props
         const {startCountDown,phone} = this.state
         return (
             <>
@@ -148,7 +151,7 @@ export default class extends PureComponent {
                 >
                     开户支行
                 </InputItem>
-                <InputItem
+                {type != 'modify' ? null : <InputItem
                     placeholder={'请输入短信验证码'}
                     extra={<div styleName="send-code" onClick={this._sendCode}>
                         <CountDown
@@ -162,7 +165,7 @@ export default class extends PureComponent {
                     })}
                 >
                     短信验证
-                </InputItem>
+                </InputItem>}
                 <Submit
                     onClick={this._submit}
                     title={'提交'}

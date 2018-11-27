@@ -1,4 +1,4 @@
-import {Userinfo,GetCloseOrderList} from '@/services/api'
+import {Userinfo,GetCloseOrderList,GetOrderList,addCapital} from '@/services/api'
 import {alert} from '@/utils/common'
 import router from 'umi/router'
 
@@ -47,6 +47,24 @@ export default {
             if(data && data.rs){
                 return data.datas
             }
+        },
+        *getOrderList(_,{call,put,select}){
+            try{
+                const data = yield call(GetOrderList)
+                if(data){
+                    if(data.rs){
+                        return data.datas
+                    }
+                }else{
+
+                }
+            }catch(e){
+                console.log(e)
+            }
+        },
+        *addCapital({capital,orderid},{call}){
+            const data = yield call(addCapital,{orderid:orderid,capital:capital})
+            return data
         }
     }
 }

@@ -45,6 +45,11 @@ export async function SelectedStockSort({content}) {
 }
 
 export async function Login(params) {
+    // fetch('/api/latest').then(res=>{
+    //     return res.json();
+    // }).then(data=>{
+    //     console.log(data);
+    // })
     return request(`app/Login`,{
         method: 'POST',
         body: {
@@ -56,7 +61,7 @@ export async function Login(params) {
 * 发送短信 phone
 * */
 export async function SendSmsCode(params) {
-    return request(`app/SendSmsCode `,{
+    return request(`app/SendSmsCode`,{
         method: 'POST',
         body: {
             ...params,
@@ -69,6 +74,15 @@ export async function SendSmsCode(params) {
 export async function SendModifyCardCode() {
     return request(`app/SendModifyCardCode `,{
         method: 'POST'
+    });
+}
+/*发送修改密码验证码*/
+export async function SendForgotSmsCode(params) {
+    return request(`app/SendForgotSmsCode`,{
+        method: 'POST',
+        body: {
+            ...params,
+        }
     });
 }
 /*
@@ -84,7 +98,7 @@ export async function ModifyCard(params) {
 }
 
 export async function Register(params) {
-    return request(`app/Reg `,{
+    return request(`app/Reg`,{
         method: 'POST',
         body: {
             ...params,
@@ -185,6 +199,27 @@ export async function CloseOrder(params) {
 /*结算单*/
 export async function GetCloseOrderList(params) {
     return request(`dmapi/GetCloseOrderList`,{
+        method: 'POST',
+        body: params
+    });
+}
+/*提现*/
+export async function withdraw(params) {
+    return request(`app/withdraw`,{
+        method: 'POST',
+        body: params
+    });
+}
+/*交易动态*/
+export async function TradeDynamics() {
+    return request(`dmapi/TradeDynamics`);
+}
+/*
+* 设置保证金
+* orderid,capital
+*/
+export async function addCapital(params) {
+    return request(`dmapi/addcapital   `,{
         method: 'POST',
         body: params
     });

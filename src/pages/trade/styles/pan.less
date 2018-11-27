@@ -3,12 +3,13 @@
 .container{
     padding: .3rem;
     .top{
-        flex-wrap: wrap;
         .item{
             min-width: 33%;
             margin-left: 0;
             margin-top: .33rem;
             font-size: .4rem;
+            width: 33%;
+            flex: 0 1 auto;
         }
     }
     .bot{
@@ -18,6 +19,8 @@
             margin-left: 0;
             margin-top: .27rem;
             font-size: .4rem;
+            width: 45%;
+            flex: 0 1 auto;
             div:nth-of-type(2){
                 color: @down;
             }

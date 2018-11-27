@@ -7,6 +7,7 @@ import {getKData} from '@/services/api'
 import {connect} from 'dva'
 import {TRADE_CODE} from '@/utils/params'
 import Pan from './pan'
+import {getDPR} from '@/utils/common'
 
 const draw = new Draw();
 
@@ -25,7 +26,8 @@ class K extends React.Component {
     type_choose = '分时'
     height = (274 / 667) * window.screen.height
     componentDidMount() {
-        const kOffetTop = document.getElementById("k").offsetTop - 10
+        const diff = 10 * (getDPR() / 2)
+        const kOffetTop = document.getElementById("kcanvas").offsetTop - diff
         // this.height = window.screen.height - kOffetTop -100
         setTimeout(() => {
             draw.画布id = "k";
@@ -115,9 +117,35 @@ class K extends React.Component {
             }
         }
     }
-
+    shouldComponentUpdate(nextProps,nextState){
+        if(nextState.type_choose != this.state.type_choose){
+            return true
+        }else{
+            return false
+        }
+    }
     render() {
         const {type_list,type_choose,pan} = this.state;
+        let height = this.height
+        let dpr = document.getElementsByTagName('html')[0].getAttribute("data-dpr");
+        let style = {zoom:dpr / 2,backgroundColor: "#20212b"}
+        if(pan){
+            style.display = 'none'
+        }else{
+            style.display = 'block'
+        }
+        // const u = navigator.userAgent
+        // const isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1
+        // let style = {backgroundColor: "#20212b"}
+        // if(isAndroid){
+        //     style = {zoom: 0.5, backgroundColor: "#20212b"}
+        //     height = height / 2
+        // }
+        // if(pan){
+        //     style.display = 'none'
+        // }else{
+        //     style.display = 'block'
+        // }
         return (
             <div>
                 <Flex className={styles["k-nav"]}>
@@ -125,10 +153,11 @@ class K extends React.Component {
                         <Flex.Item style={type_choose === item ? {borderBottom:'1px solid #fff'} : {}} className={styles["k-nav-item"]} key={'k_nav_'+index} onClick={this.chooseType(item).bind(this)}>{item}</Flex.Item>
                     ))}
                 </Flex>
-                <div style={{height:this.height * 2 + 'px'}}>
-                    <canvas id="k" style={{zoom: 1, backgroundColor: "#20212b"}} style={pan ? {display:'none'} : null}></canvas>
+                <div style={{height:height * dpr + 'px'}} id={'kcanvas'}>
+                    <canvas id="k" style={style}></canvas>
                     {pan ? <Pan
                         height={this.height}
+                        code={this.code}
                     /> : null}
                 </div>
             </div>

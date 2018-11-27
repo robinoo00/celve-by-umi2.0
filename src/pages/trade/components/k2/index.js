@@ -7,18 +7,19 @@ import {getKData} from '@/services/api'
 import {connect} from 'dva'
 // import Hammer from 'react-hammerjs'
 import Pan from './pan'
+import {getDPR} from '@/utils/common'
 
 @CSSModules(styles)
 
 export default class extends PureComponent {
     state = {
         type_list:['分时','日线','周线','月线','盘口'],
+        code:this.props.code,
         reload:false
     }
     panShow = false
     type_choose = '分时'
     lastTime = ''
-    code = this.props.code
     拖动开始x = 0
     拖动距离 = 0
     sid = 0
@@ -39,7 +40,7 @@ export default class extends PureComponent {
     }
     _getData = () => {
         const params = {
-            contract: this.code,
+            contract: this.state.code,
             type:this.type_choose,
             time:this.lastTime
         }
@@ -55,6 +56,52 @@ export default class extends PureComponent {
             // console.log('新数组',this.draw.新数组)
         })
     }
+    componentDidUpdate(prevProps, prevState) {
+        if(prevState.code != this.state.code){
+            clearInterval(this.sid)
+            this.code = this.state.code
+            this.change()
+        }
+    }
+    static getDerivedStateFromProps(props,state){
+        if(props.code && props.code != state.code){
+            return {
+                code:props.code
+            }
+        }
+        return null
+    }
+    change = (type = '分时') => {
+        this.setState({
+            reload:!this.state.reload
+        })
+        this.type_choose = type
+        this.panShow = false
+        this.lastTime = ''
+        this.draw.data = []
+        this.draw.loading()
+        this.draw.chooseType(type)
+        this._getData()
+        if(type === '分时'){
+            this.sid = setInterval(this._getData,3000)
+        }else{
+            clearInterval(this.sid)
+        }
+    }
+    chooseType = (type) => () => {
+        if(this.type_choose != type){
+            if(type === '盘口'){
+                this.panShow = true
+                this.type_choose = type
+                this.setState({
+                    reload:!this.state.reload
+                })
+
+            }else{
+                this.change(type)
+            }
+        }
+    }
     _bindHammer = () => {
         const klineHammer = new window.Hammer.Manager(document.getElementById("k"));
         const pan = new window.Hammer.Pan();
@@ -66,6 +113,8 @@ export default class extends PureComponent {
         klineHammer.on('press', this.handlePress);
         klineHammer.on('pressup', this.handlePressUp);
         klineHammer.on('panend', this.handlePressUp);
+        klineHammer.on('pinchout', this.handlePinchOut);
+        klineHammer.on('pinchin', this.handlePinchIn);
     }
     handlePan = (e) => {
         const {x,y} = e.center
@@ -107,38 +156,36 @@ export default class extends PureComponent {
         this.draw.drawDrag(x,y)
     }
     handlePressUp = e => {
-        console.log('up')
         this.draw.十字线显示 = false
         this.draw.drawDrag()
     }
-    chooseType = (type) => () => {
-        if(this.type_choose != type){
-            if(type === '分时'){
-                this.sid = setInterval(this._getData,3000)
-            }else{
-                clearInterval(this.sid)
-            }
-            this.type_choose = type
-            this.setState({
-                reload:!this.state.reload
-            })
-            if(type === '盘口'){
-                this.panShow = true
-            }else{
-                this.panShow = false
-                this.lastTime = ''
-                this.draw.data = []
-                this.draw.loading()
-                this.draw.chooseType(type)
-                this._getData()
-            }
+    handlePinchIn = e => {
+        const draw = this.draw
+        draw.K线显示柱条数 = draw.K线显示柱条数 + Math.floor(2 / e.scale);
+        if (draw.K线显示柱条数 < 1) {
+            draw.K线显示柱条数 = 1
         }
+        draw.draw()
+    }
+    handlePinchOut = e => {
+        const draw = this.draw
+        draw.K线显示柱条数 = draw.K线显示柱条数 - Math.floor(1.9 * e.scale)
+        if (draw.K线显示柱条数 < 1) {
+            draw.K线显示柱条数 = 1
+        }
+        draw.draw()
     }
     render() {
         const {type_list} = this.state
         const type_choose = this.type_choose
-        const height = this.height
-        console.log('render')
+        let height = this.height
+        let dpr = getDPR()
+        let style = {zoom:dpr / 2,backgroundColor: "#20212b"}
+        if(this.panShow){
+            style.display = 'none'
+        }else{
+            style.display = 'block'
+        }
         return (
             <div>
                 <Flex className={styles["k-nav"]}>
@@ -146,8 +193,8 @@ export default class extends PureComponent {
                         <Flex.Item style={type_choose === item ? {borderBottom:'1px solid #fff'} : {}} className={styles["k-nav-item"]} key={'k_nav_'+index} onClick={this.chooseType(item)}>{item}</Flex.Item>
                     ))}
                 </Flex>
-                <div style={{height:height + 'px'}}>
-                    <canvas id="k" style={{backgroundColor: "#20212b"}} style={this.panShow ? {display:'none'} : null}></canvas>
+                <div style={{height:height * dpr / 2 + 'px'}} id={'kcanvas'}>
+                    <canvas id="k" style={style}></canvas>
                     {this.panShow ? <Pan
                         height={this.height}
                     /> : null}

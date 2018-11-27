@@ -25,7 +25,7 @@ export default class extends PureComponent {
                 <Header
                     title={'规则'}
                 />
-                <div style={{backgroundColor:'#fff',zoom:2,padding:'.3rem'}}>
+                <div style={{backgroundColor:'#fff',padding:'.3rem'}}>
                     <div dangerouslySetInnerHTML={{
                         __html: text
                     }}></div>

@@ -5,7 +5,7 @@ import {PureComponent} from 'react'
 
 const tabs = [
     {title: <Badge>交易动态</Badge>},
-    {title: <Badge>盈利分配</Badge>},
+    // {title: <Badge>盈利分配</Badge>},
 ];
 
 @CSSModules(styles)
@@ -16,7 +16,7 @@ export default class extends PureComponent {
         return (
             <div styleName="container">
                 <Tabs tabs={tabs}
-                      initialPage={1}
+                      initialPage={0}
                       onChange={(tab, index) => {
                           console.log('onChange', index, tab);
                       }}

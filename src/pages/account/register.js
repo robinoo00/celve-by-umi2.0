@@ -63,6 +63,9 @@ export default class extends PureComponent {
             callback('密码只能输入6-15个字母、数字、下划线!');
         }
     }
+    linkToAgreement = () => {
+        router.push('/account/agreement')
+    }
     render() {
         const {form} = this.props
         const {startCountDown,phone} = this.state
@@ -135,7 +138,7 @@ export default class extends PureComponent {
                         onClick={this._submit}
                     >下一步</Button>
                     <p styleName="tip">
-                        点击下一步，即同意<span>用户服务协议</span>
+                        点击下一步，即同意<span onClick={this.linkToAgreement}>用户服务协议</span>
                     </p>
                 </div>
                 <div styleName="extra">

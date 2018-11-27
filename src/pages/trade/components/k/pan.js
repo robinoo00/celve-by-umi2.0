@@ -1,5 +1,4 @@
 import {PureComponent} from 'react'
-import CSSModules from 'react-css-modules'
 import styles from '../../styles/pan.less'
 import {Flex} from 'antd-mobile'
 import {connect} from 'dva'
@@ -7,10 +6,7 @@ import {GetShares} from '@/services/api'
 
 const Item = Flex.Item
 
-@connect(({routing}) => ({
-    code:routing.location.query.code
-}))
-@CSSModules(styles)
+@connect()
 
 export default class extends PureComponent {
     state = {
@@ -18,8 +14,7 @@ export default class extends PureComponent {
     }
     componentDidMount(){
         const params = {
-            code:'SH600139',
-            async:false
+            code:this.props.code
         }
         this._getData(params)
     }
@@ -55,70 +50,44 @@ export default class extends PureComponent {
         const {height} = this.props
         if(!data) return null
         const reData = this._rebuildData(data)
+        const list1 = [
+            {title:'今开',key:'今日开盘价'},
+            {title:'涨跌',key:'涨跌'},
+            {title:'最高',key:'今日最高价'},
+            {title:'昨收',key:'昨日收盘价'},
+            {title:'跌停',key:'跌停'},
+            {title:'最低',key:'今日最低价'},
+            {title:'振幅',key:'振幅'},
+            {title:'总手',key:'总手'},
+            {title:'总量',key:'成交金额'},
+        ]
+        const list2 = [
+            {title:'卖1',key1:'卖一报价',key2:'卖一'},
+            {title:'买1',key1:'买一报价',key2:'买一'},
+            {title:'卖2',key1:'卖二报价',key2:'卖二'},
+            {title:'买2',key1:'买二报价',key2:'买二'},
+            {title:'卖3',key1:'卖三报价',key2:'卖三'},
+            {title:'买3',key1:'买三报价',key2:'买三'},
+            {title:'卖4',key1:'卖四报价',key2:'卖四'},
+            {title:'买4',key1:'买四报价',key2:'买四'},
+            {title:'卖5',key1:'卖五报价',key2:'卖五'},
+            {title:'买5',key1:'买五报价',key2:'买五'}
+        ]
         return (
-            <div styleName="container" style={{height:height * 2 + 'px'}}>
-                <Flex wrap="wrap" justify={"around"} styleName={'top'}>
-                    <Item styleName='item'>今开 {reData.今日开盘价}</Item>
-                    <Item styleName='item'>涨跌 {reData.涨跌}</Item>
-                    <Item styleName='item'>最高 {reData.今日最高价}</Item>
-                    <Item styleName='item'>昨收 {reData.昨日收盘价}</Item>
-                    <Item styleName='item'>跌停 {reData.跌停}</Item>
-                    <Item styleName='item'>最低 {reData.今日最低价}</Item>
-                    <Item styleName='item'>振幅 {reData.振幅}</Item>
-                    <Item styleName='item'>总手 {reData.总手}</Item>
-                    <Item styleName='item'>总量 {reData.成交金额}</Item>
+            <div className={styles["container"]} style={{height:height * 2 + 'px'}}>
+                <Flex wrap="wrap" justify={"around"} className={styles['top']}>
+                    {list1.map(item => (
+                        <Item className={styles['item']} key={item.title}>{item.title} {reData[item.key]}</Item>
+                    ))}
                 </Flex>
-                <Flex wrap="wrap" justify={"between"} styleName={'bot'}>
-                    <Flex styleName='item'>
-                        <Item>卖1</Item>
-                        <Item>{reData.卖一报价}</Item>
-                        <Item>{reData.卖一}</Item>
-                    </Flex>
-                    <Flex styleName='item'>
-                        <Item>买1</Item>
-                        <Item>{reData.买一报价}</Item>
-                        <Item>{reData.买一}</Item>
-                    </Flex>
-                    <Flex styleName='item'>
-                        <Item>卖2</Item>
-                        <Item>{reData.卖二报价}</Item>
-                        <Item>{reData.卖二}</Item>
-                    </Flex>
-                    <Flex styleName='item'>
-                        <Item>买2</Item>
-                        <Item>{reData.买二报价}</Item>
-                        <Item>{reData.买二}</Item>
-                    </Flex>
-                    <Flex styleName='item'>
-                        <Item>卖3</Item>
-                        <Item>{reData.卖三报价}</Item>
-                        <Item>{reData.卖三}</Item>
-                    </Flex>
-                    <Flex styleName='item'>
-                        <Item>买3</Item>
-                        <Item>{reData.买三报价}</Item>
-                        <Item>{reData.买三}</Item>
-                    </Flex>
-                    <Flex styleName='item'>
-                        <Item>卖4</Item>
-                        <Item>{reData.卖四报价}</Item>
-                        <Item>{reData.卖四}</Item>
-                    </Flex>
-                    <Flex styleName='item'>
-                        <Item>买4</Item>
-                        <Item>{reData.买四报价}</Item>
-                        <Item>{reData.买四}</Item>
-                    </Flex>
-                    <Flex styleName='item'>
-                        <Item>卖5</Item>
-                        <Item>{reData.卖五报价}</Item>
-                        <Item>{reData.卖五}</Item>
-                    </Flex>
-                    <Flex styleName='item'>
-                        <Item>买5</Item>
-                        <Item>{reData.买五报价}</Item>
-                        <Item>{reData.买五}</Item>
-                    </Flex>
+                <Flex wrap="wrap" justify={"between"} className={styles['bot']}>
+                    {list2.map(item => (
+                        <Flex className={styles['item']} key={item.title}>
+                            <Item>{item.title}</Item>
+                            <Item>{reData[item.key1]}</Item>
+                            <Item>{reData[item.key2]}</Item>
+                        </Flex>
+                    ))}
                 </Flex>
             </div>
         )
